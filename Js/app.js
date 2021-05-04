@@ -341,3 +341,5 @@ console.log(lima.custNum);
 lima.getCookiePerHour();
 console.log(lima.cookiePerHour);
 lima.renderFunction();
+
+
