@@ -14,6 +14,9 @@ function Shop(location, minCust,maxCust,avgCockieSold){
     this.total=0;
     
     
+    
+    shops.push(this);
+    
 }
 
 function random(min, max) {
@@ -125,21 +128,83 @@ function renderFooter(){
   let table=document.getElementById('table');
   let footer=document.createElement('tr');
   table.appendChild(footer);
-  footer.textContent="Totals";
+
+  let footerTd=document.createElement('td')
+  footer.appendChild(footerTd);
+  footerTd.textContent="Totals";
+  
+  for (let i = 0; i < time.length; i++) {
+    let totalEachHour=0;
+    for (let j = 0; j < shops.length; j++) {
+      totalEachHour += shops[j].cookiePerHour[i];
+    }
+    let footerTotal=document.createElement('td');
+    footer.appendChild(footerTotal);
+    footerTotal.textContent= totalEachHour;
+    
+  }
+  
+    
+let totalOfTotals=0;
+    for (let j = 0; j < shops.length; j++) {
+      
+      console.log(shops[j]);
+      
+      totalOfTotals += shops[j].total;
+      
+    }
+  
+    let footerTot=document.createElement('td');
+  footer.appendChild(footerTot);
+  footerTot.textContent= totalOfTotals;
 
 }
 
-Shop.prototype.renderTotals=function(){
-  let table=document.getElementById('table');
-}
 
-seattle.renderRows();
-tokyo.renderRows();
-dubai.renderRows();
-paris.renderRows();
-lima.renderRows();
 
-renderFooter();
+
+  
+  
+  
+  /*function renderTot() {
+    
+    let table=document.getElementById('table');
+    let footer=document.createElement('tr');
+    table.appendChild(footer);
+  
+    let footerTd=document.createElement('td')
+    footer.appendChild(footerTd);
+    footerTd.textContent="Totals";
+    
+    for (let i = 0; i < time.length; i++) {
+      let totalEachHour=0;
+      
+      for (let j = 0; j < shops.length; j++) {
+        totalEachHour += shops[j].cookiePerHour[j];
+        
+      }
+      let footerTotal=document.createElement('td');
+      footer.appendChild(footerTotal);
+      footerTotal.textContent= totalEachHour;
+    }
+    
+    
+    
+  }*/
+  
+  
+  
+  
+  seattle.renderRows();
+  tokyo.renderRows();
+  dubai.renderRows();
+  paris.renderRows();
+  lima.renderRows();
+  renderFooter();
+  //renderTot();
+  //console.log(totalOfTotals);
+
+
 
 
 
